@@ -41,12 +41,23 @@ export const createAppRouter = (queryClient: QueryClient) =>
       ErrorBoundary: AppRootErrorBoundary,
       children: [
         {
-          path: paths.app.discussions.path,
+          path: paths.app.addQuote.path,
           lazy: () =>
-            import("./routes/app/new_quote").then(convert(queryClient)),
+            import("./routes/app/quote/add_quote").then(convert(queryClient)),
+        },
+        {
+          path: paths.app.editQuote.path,
+          lazy: () =>
+            import("./routes/app/quote/edit_quote").then(convert(queryClient)),
+        },
+        {
+          path: paths.app.quotes.path,
+          lazy: () =>
+            import("./routes/app/quote/add_quote").then(convert(queryClient)),
         },
       ],
     },
+
     {
       path: "*",
       lazy: () => import("./routes/not-found").then(convert(queryClient)),

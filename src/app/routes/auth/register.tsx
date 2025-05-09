@@ -1,7 +1,28 @@
-import React from "react";
+import { useNavigate, useSearchParams } from "react-router";
 
-function RegisterRoute() {
-  return <div>RegisterRoute</div>;
-}
+import { AuthLayout } from "@/layouts/auth_layout";
+import { paths } from "@/config/paths";
+import { RegisterForm } from "@/features/auth/register/register_form";
+
+const RegisterRoute = () => {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const redirectTo = searchParams.get("redirectTo");
+
+  return (
+    <AuthLayout title="Register your account">
+      <RegisterForm
+        onSuccess={() => {
+          navigate(
+            `${redirectTo ? `${redirectTo}` : paths.app.dashboard.getHref()}`,
+            {
+              replace: true,
+            }
+          );
+        }}
+      />
+    </AuthLayout>
+  );
+};
 
 export default RegisterRoute;

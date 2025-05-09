@@ -1,3 +1,5 @@
+import path from "path";
+
 export const paths = {
   home: {
     path: "/",
@@ -26,25 +28,21 @@ export const paths = {
       path: "/app",
       getHref: () => "/app",
     },
+    quotes: {
+      path: "quotes",
+      getHref: () => "/app/quotes",
+    },
+    addQuote: {
+      path: "quotes/add",
+      getHref: () => "/app/quotes/add",
+    },
+    editQuote: {
+      path: "quotes/edit/:quoteId",
+      getHref: (id: string) => `/app/quotes/edit/${id}`,
+    },
     dashboard: {
       path: "",
       getHref: () => "/app",
-    },
-    discussions: {
-      path: "discussions",
-      getHref: () => "/app/discussions",
-    },
-    discussion: {
-      path: "discussions/:discussionId",
-      getHref: (id: string) => `/app/discussions/${id}`,
-    },
-    users: {
-      path: "users",
-      getHref: () => "/app/users",
-    },
-    profile: {
-      path: "profile",
-      getHref: () => "/app/profile",
     },
   },
 } as const;
