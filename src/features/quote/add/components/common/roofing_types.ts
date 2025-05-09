@@ -53,8 +53,10 @@ export const roofingMaterialTypeOptions: IRoofingMaterialType[] = [
 const RoofingMaterialSchema = z.object({
   type: z
     .enum(["asphalt_shingles", "metal", "flat_roof", "other"] as const)
-    .or(z.literal(""))
-    .refine((val) => val !== "", { message: "Please select roofing material" })
+
+    .refine((val) => val !== undefined, {
+      message: "Please select roofing material",
+    })
     .nullable(),
 
   otherType: z.string().nullable().optional(),
@@ -63,8 +65,9 @@ const RoofingMaterialSchema = z.object({
 export const RoofingQuesOneSchema = z.object({
   serviceNeeded: z
     .enum(["replacement"] as const)
-    .or(z.literal(""))
-    .refine((val) => val !== "", { message: "Please select service needed" }),
+    .refine((val) => val !== undefined, {
+      message: "Please select service needed",
+    }),
 
   roofingMaterial: RoofingMaterialSchema.superRefine((val, ctx) => {
     if (
@@ -118,8 +121,8 @@ export const metalRoofingOptions: IMetalRoofingOptions[] = [
 const MetalRoofingSchema = z.object({
   type: z
     .enum(["aluminum", "steel", "copper", "other"] as const)
-    .or(z.literal(""))
-    .refine((val) => val !== "", {
+
+    .refine((val) => val !== undefined, {
       message: "Please select one of the field",
     })
     .nullable(),
@@ -223,8 +226,8 @@ export const RoofingQuesTwoAsphaltSchema = z.object({
     .object({
       brand: z
         .enum(["gaf_brand", "certain_teed_brand", "other"] as const)
-        .or(z.literal(""))
-        .refine((val) => val !== "", {
+
+        .refine((val) => val !== undefined, {
           message: "Please choose one of the field",
         })
         .nullable(),
@@ -276,6 +279,6 @@ export const RoofingQuesTwoAsphaltSchema = z.object({
     }),
 });
 
-export type IRoofingQuesTwoAsphaltSchema = z.infer<
+export type TRoofingQuesTwoAsphaltSchema = z.infer<
   typeof RoofingQuesTwoAsphaltSchema
 >;

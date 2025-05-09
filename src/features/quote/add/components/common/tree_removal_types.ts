@@ -168,6 +168,6 @@ export const TreeRemovalQuesTwoSchema = z.object({
   ),
 });
 
-export type ITreeRemovalQuesTwoSchema = z.infer<
+export type TTreeRemovalQuesTwoSchema = z.infer<
   typeof TreeRemovalQuesTwoSchema
 >;

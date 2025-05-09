@@ -28,8 +28,7 @@ export const landscapingServiceNeededOptions: ILandscapingServiceNeeded[] = [
 export const LandscapingQuesOneSchema = z.object({
   serviceNeeded: z
     .enum(["lawn_mowing", "mulch_installation"])
-    .or(z.literal(""))
-    .refine((val) => val !== "", {
+    .refine((val) => val !== undefined, {
       message: "Service is required",
     }),
 });
@@ -131,8 +130,7 @@ export const LandscapingQuesTwoMulchInstallationSchema = z.object({
         "black_colorized_mulch",
         "red_colorized_mulch",
       ] as const)
-      .or(z.literal(""))
-      .refine((val) => val !== "", {
+      .refine((val) => val !== undefined, {
         message: "Please select mulch type",
       }),
   }),
