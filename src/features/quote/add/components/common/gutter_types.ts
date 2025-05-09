@@ -72,7 +72,7 @@ export const GutterCleaningQuesOneSchema = z.object({
   images: z.any().optional(), // you can refine this if needed for file list or S3 object
 });
 
-export type IGutterCleaningQuesOneSchema = z.infer<
+export type TGutterCleaningQuesOneSchema = z.infer<
   typeof GutterCleaningQuesOneSchema
 >;
 

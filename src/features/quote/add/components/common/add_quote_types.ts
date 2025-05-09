@@ -252,11 +252,13 @@ export const propertyTypeOptions: IPropertyTypeOptions[] = [
   },
 ];
 
-export const NewQuoteFirstPageSchema = z.object({
+export const AddQuoteFirstPageSchema = z.object({
   serviceType: z
     .enum(["tree_removal", "landscaping", "roofing", "gutter"])
-    .or(z.literal(""))
-    .refine((val) => val !== "", { message: "Please select service type" }),
+    .refine((val) => val !== undefined, {
+      message: "Please select service type",
+    }),
+
   location: z.object({
     address: z.string().min(1, "Address is required"),
     zipCode: z
@@ -270,7 +272,7 @@ export const NewQuoteFirstPageSchema = z.object({
   propertyType: z.string().min(1, "Please select service type"),
 });
 
-export type TNewQuoteFirstPageSchema = z.infer<typeof NewQuoteFirstPageSchema>;
+export type TAddQuoteFirstPageSchema = z.infer<typeof AddQuoteFirstPageSchema>;
 
 // -------------------- END NEW QUOTE SCHEMA --------------------
 
