@@ -69,9 +69,9 @@ function FirstQuestion() {
               />
             </div>
           </div>
-          <div className="w-full sm:w-[80%] md:w-[50%]">
-            <AddQuoteSideText activeForm="gutterQuesOne" />
-          </div>
+        </div>
+        <div className="w-full sm:w-[80%] md:w-[50%]">
+          <AddQuoteSideText activeForm="gutterQuesOne" />
         </div>
       </div>
     </form>
